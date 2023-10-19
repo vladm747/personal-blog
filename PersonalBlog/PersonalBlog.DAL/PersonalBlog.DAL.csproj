@@ -9,6 +9,8 @@
     <ItemGroup>
       <Folder Include="Infranstructure\DI\Abstract\" />
       <Folder Include="Infranstructure\DI\Repository\" />
+      <Folder Include="Infrastructure\DI\Abstract\" />
+      <Folder Include="Infrastructure\DI\Implementations\" />
     </ItemGroup>
 
     <ItemGroup>
