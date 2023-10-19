@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalBlog.PL", "PersonalBlog.PL\PersonalBlog.PL.csproj", "{390778A3-35FD-4B12-BD58-A892957582A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalBlog.API", "PersonalBlog.API\PersonalBlog.API.csproj", "{390778A3-35FD-4B12-BD58-A892957582A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalBlog.DAL", "PersonalBlog.DAL\PersonalBlog.DAL.csproj", "{CCB23500-64DF-4EC6-9273-37B7822481B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalBlog.BLL", "PersonalBlog.BLL\PersonalBlog.BLL.csproj", "{F5A88C58-6CE9-4F2D-8E21-E740EE19B324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{CCB23500-64DF-4EC6-9273-37B7822481B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCB23500-64DF-4EC6-9273-37B7822481B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCB23500-64DF-4EC6-9273-37B7822481B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A88C58-6CE9-4F2D-8E21-E740EE19B324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A88C58-6CE9-4F2D-8E21-E740EE19B324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A88C58-6CE9-4F2D-8E21-E740EE19B324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A88C58-6CE9-4F2D-8E21-E740EE19B324}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
