@@ -41,7 +41,7 @@ public class AuthService: IAuthService
     
     public async Task<User> Login(LoginDTO login)
     {
-        var user = _userManager.Users.SingleOrDefault(login => login.UserName == login.Email);
+        var user = _userManager.Users.SingleOrDefault(item => item.UserName == login.Email);
 
         if (user == null)
         {
