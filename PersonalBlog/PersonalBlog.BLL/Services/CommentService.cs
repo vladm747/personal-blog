@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PersonalBlog.BLL.DTO;
 using PersonalBlog.BLL.Interfaces;
+using PersonalBlog.DAL.Entities;
 using PersonalBlog.DAL.Infrastructure.DI.Abstract;
 
 namespace PersonalBlog.BLL.Services;
@@ -32,5 +33,34 @@ public class CommentService: ICommentService
             throw new KeyNotFoundException($"The comment with key {commentId} does not exist in database!");
 
         return _mapper.Map<CommentDTO>(comment);
+    }
+
+    public async Task CreateAsync(CommentDTO entity)
+    {
+        if (entity == null)
+            throw new ArgumentNullException("the entity you are trying create is null");
+        
+        var comment = _mapper.Map<Comment>(entity);
+        await _repo.CreateAsync(comment);
+    }
+
+    public async Task DeleteAsync(int commentId)
+    {
+        var entity = await GetByIdAsync(commentId);
+
+        if (entity == null)
+            throw new InvalidOperationException("The entity you are trying to delete does not exist in database!");
+        
+        var comment = _mapper.Map<Comment>(entity);
+        await _repo.DeleteAsync(comment);
+    }
+
+    public async Task UpdateAsync(CommentDTO entity)
+    {
+        if (entity == null)
+            throw new ArgumentNullException("entity is null.");
+        
+        var comment = _mapper.Map<Comment>(entity);
+        await _repo.UpdateAsync(comment);
     }
 }

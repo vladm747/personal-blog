@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PersonalBlog.BLL.DTO;
 using PersonalBlog.BLL.Interfaces;
 
 namespace PersonalBlog.API.Controllers;
 
+[Route("api/[controller]")]
 [ApiController]
-[Route("/")]
 public class CommentController : Controller
 {
     private readonly ICommentService _service;
@@ -27,5 +28,27 @@ public class CommentController : Controller
         var comments = await _service.GetByIdAsync(id);
         return Ok(comments);
     }
+
+    [HttpPost("comment")]
+    public async Task<IActionResult> CreateComment([FromBody] CommentDTO comment)
+    {
+        await _service.CreateAsync(comment);
+        return Ok();
+    }
+
+    [HttpDelete("comment/{commentId}")]
+    public async Task<IActionResult> DeleteAsync(int commentId)
+    {
+        await _service.DeleteAsync(commentId);
+        return Ok();
+    }
     
+    [HttpPut("comment")]
+    public async Task<IActionResult> UpdateAsync(int id, CommentDTO comment)
+    {
+        if (id != comment.Id)
+            return BadRequest();
+        await _service.UpdateAsync(comment);
+        return Ok();
+    }
 }

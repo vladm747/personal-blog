@@ -1,0 +1,10 @@
+﻿namespace PersonalBlog.BLL.DTO;
+
+public class BlogDTO
+{
+    public int Id { get; set; }
+    
+    public string UserId { get; set; }
+    
+    public ICollection<PostDTO>? Posts { get; set; }
+}
