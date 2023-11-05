@@ -4,15 +4,21 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using PersonalBlog.API.Filters;
 using PersonalBlog.API.Helpers;
 using PersonalBlog.BLL.Interfaces;
+using PersonalBlog.BLL.Interfaces.Auth;
+using PersonalBlog.BLL.Profiles;
 using PersonalBlog.BLL.Services;
+using PersonalBlog.BLL.Services.Auth;
 using PersonalBlog.DAL.Context;
 using PersonalBlog.DAL.Entities.Auth;
+using PersonalBlog.DAL.Infrastructure.DI.Abstract;
+using PersonalBlog.DAL.Infrastructure.DI.Implementations;
 
 namespace PersonalBlog.API.Startup;
 
-public static partial class ServiceInitializer
+public static class ServiceInitializer
 {
     public static IServiceCollection RegisterApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
@@ -22,11 +28,14 @@ public static partial class ServiceInitializer
     }
     public static void RegisterCustomDependencies(IServiceCollection services, IConfiguration configuration)
     {
+        services.AddAutoMapper(typeof(AutoMapperProfiles));
         services.AddDbContext<PersonalBlogContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("PersonalBlog")));
         
         services.AddScoped<IAuthService, AuthService>();  
-        services.AddScoped<IRoleService, RoleService>();  
+        services.AddScoped<IRoleService, RoleService>();
+        services.AddScoped<ICommentService, CommentService>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
         
         services.AddCors(options =>
         {
@@ -37,7 +46,7 @@ public static partial class ServiceInitializer
                 });
         });
         
-        services.AddControllers();
+        services.AddControllers(options => options.Filters.Add<PersonalBlogExceptionFilterAttribute>());
         services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;

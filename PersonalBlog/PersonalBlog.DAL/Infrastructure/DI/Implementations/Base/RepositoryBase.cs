@@ -18,6 +18,11 @@ public abstract class RepositoryBase<TKey, TEntity> : IRepositoryBase<TKey, TEnt
     {
         return Table;
     }
+    
+    public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
+    {
+        return await Table.ToListAsync();
+    }
 
     public virtual async Task<TEntity> FindByKeyAsync(TKey key)
     {

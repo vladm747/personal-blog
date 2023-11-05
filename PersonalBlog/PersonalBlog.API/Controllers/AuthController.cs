@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using PersonalBlog.API.Helpers;
-using PersonalBlog.BLL.DTO;
-using PersonalBlog.BLL.Interfaces;
+using PersonalBlog.BLL.DTO.Auth;
+using PersonalBlog.BLL.Interfaces.Auth;
 
 namespace PersonalBlog.API.Controllers;
 
