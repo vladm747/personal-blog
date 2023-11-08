@@ -31,7 +31,7 @@ public abstract class RepositoryBase<TKey, TEntity> : IRepositoryBase<TKey, TEnt
 
     public async Task CreateAsync(TEntity item)
     {
-        await Table.AddAsync(item);
+        var entityEntry = await Table.AddAsync(item);
         await _dbContext.SaveChangesAsync();
     }
 

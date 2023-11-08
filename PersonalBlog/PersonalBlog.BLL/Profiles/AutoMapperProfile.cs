@@ -8,7 +8,8 @@ public class AutoMapperProfiles: Profile
 {
     public AutoMapperProfiles()
     {
-        CreateMap<Comment, CommentDTO>();
-        CreateMap<Post, PostDTO>();
+        CreateMap<Comment, CommentDTO>().ReverseMap();
+        CreateMap<Post, PostDTO>().ReverseMap();
+        CreateMap<Blog, BlogDTO>().ReverseMap();
     }
 }

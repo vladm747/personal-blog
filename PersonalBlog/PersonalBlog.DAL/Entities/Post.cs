@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PersonalBlog.DAL.Entities.Auth;
 
 namespace PersonalBlog.DAL.Entities;
 
@@ -14,9 +15,12 @@ public class Post
     [Required]
     public DateTime PublicationDate { get; set; }
     
+    [ForeignKey(nameof(User))]
     public string UserId { get; set; }
     
-    [ForeignKey("Blog")]
+    public User User { get; set; }
+    
+    [ForeignKey(nameof(Blog))]
     public int BlogId { get; set; }
     public Blog Blog { get; set; } = null!;
     

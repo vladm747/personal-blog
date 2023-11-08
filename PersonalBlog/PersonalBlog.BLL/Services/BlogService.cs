@@ -29,7 +29,7 @@ public class BlogService: IBlogService
     
     public async Task<BlogDTO> GetByIdAsync(int blogId)
     {
-        var blog = await _repo.FindByKeyAsync(blogId);
+        var blog = await _repo.GetByIdAsync(blogId);
 
         if (blog == null)
             throw new KeyNotFoundException($"The blog with id {blogId} does not exist in database.");
@@ -37,19 +37,20 @@ public class BlogService: IBlogService
         return _mapper.Map<BlogDTO>(blog);
     }
 
-    public async Task CreateAsync(string userId)
+    public async Task<BlogDTO> CreateAsync(string userId)
     {
         var entity = new Blog()
         {
             UserId = userId
         };
 
-        await _repo.CreateAsync(entity);
+        var blog = await _repo.CreateAsync(entity);
+        return _mapper.Map<BlogDTO>(blog);
     }
 
     public async Task DeleteAsync(int blogId)
     {
-        var blog = await _repo.FindByKeyAsync(blogId);
+        var blog = await _repo.GetByIdAsync(blogId);
 
         if (blog == null)
             throw new KeyNotFoundException($"There is no blog with ID {blogId} in database.");

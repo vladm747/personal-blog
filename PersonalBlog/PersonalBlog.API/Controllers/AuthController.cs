@@ -29,7 +29,7 @@ public class AuthController : ControllerBase
     {
         await _authService.Register(model);
 
-        return Created(string.Empty, string.Empty);
+        return Ok();
     }
 
     [HttpPost("login")]

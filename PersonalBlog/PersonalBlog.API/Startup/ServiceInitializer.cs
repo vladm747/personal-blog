@@ -34,8 +34,13 @@ public static class ServiceInitializer
         
         services.AddScoped<IAuthService, AuthService>();  
         services.AddScoped<IRoleService, RoleService>();
+        services.AddScoped<IUserService, UserService>();
         services.AddScoped<ICommentService, CommentService>();
         services.AddScoped<ICommentRepository, CommentRepository>();
+        services.AddScoped<IBlogService, BlogService>();
+        services.AddScoped<IBlogRepository, BlogRepository>();
+        services.AddScoped<IPostService, PostService>();
+        services.AddScoped<IPostRepository, PostRepository>();
         
         services.AddCors(options =>
         {
@@ -80,9 +85,9 @@ public static class ServiceInitializer
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidIssuer = jwtSettings.Issuer,
-                    ValidAudience = jwtSettings.Issuer,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret)),
+                    ValidIssuer = jwtSettings?.Issuer,
+                    ValidAudience = jwtSettings?.Issuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings?.Secret)),
                     ClockSkew = TimeSpan.Zero
                 };
             });

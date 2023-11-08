@@ -51,13 +51,13 @@ namespace PersonalBlog.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "52504375-3bd5-468f-a657-b8477df34f31",
+                            Id = "88a39ee5-1a9a-4c31-9e9a-3f6d9a2b0439",
                             Name = "author",
                             NormalizedName = "AUTHOR"
                         },
                         new
                         {
-                            Id = "94fc19a3-0ff4-43f6-91c4-b20b28805788",
+                            Id = "46a0501f-9eea-4dc6-a4a5-a663bc2a9c91",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -248,9 +248,12 @@ namespace PersonalBlog.DAL.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Blogs");
                 });
@@ -275,11 +278,13 @@ namespace PersonalBlog.DAL.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -304,11 +309,13 @@ namespace PersonalBlog.DAL.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BlogId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Posts");
                 });
@@ -364,15 +371,34 @@ namespace PersonalBlog.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PersonalBlog.DAL.Entities.Blog", b =>
+                {
+                    b.HasOne("PersonalBlog.DAL.Entities.Auth.User", "User")
+                        .WithOne("Blog")
+                        .HasForeignKey("PersonalBlog.DAL.Entities.Blog", "UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("PersonalBlog.DAL.Entities.Comment", b =>
                 {
                     b.HasOne("PersonalBlog.DAL.Entities.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
+                    b.HasOne("PersonalBlog.DAL.Entities.Auth.User", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Post");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PersonalBlog.DAL.Entities.Post", b =>
@@ -380,10 +406,27 @@ namespace PersonalBlog.DAL.Migrations
                     b.HasOne("PersonalBlog.DAL.Entities.Blog", "Blog")
                         .WithMany("Posts")
                         .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
+                    b.HasOne("PersonalBlog.DAL.Entities.Auth.User", "User")
+                        .WithMany("Posts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Blog");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PersonalBlog.DAL.Entities.Auth.User", b =>
+                {
+                    b.Navigation("Blog");
+
+                    b.Navigation("Comments");
+
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("PersonalBlog.DAL.Entities.Blog", b =>

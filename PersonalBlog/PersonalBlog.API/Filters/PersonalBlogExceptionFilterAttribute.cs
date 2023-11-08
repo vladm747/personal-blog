@@ -10,8 +10,18 @@ public class PersonalBlogExceptionFilterAttribute : Attribute, IExceptionFilter
         var ex = context.Exception;
         IActionResult actionResult = ex switch
         {
-            KeyNotFoundException => new NotFoundObjectResult(new ErrorDTO { Message = ex.Message }),
-            _ => new BadRequestObjectResult(new ErrorDTO() { Message = ex.Message })
+            KeyNotFoundException => new NotFoundObjectResult(new ErrorDTO
+            {
+                Message = ex.Message,
+                StackTrace = ex.StackTrace,
+                Source = ex.Source
+            }),
+            _ => new BadRequestObjectResult(new ErrorDTO()
+            {
+                Message = ex.Message,
+                StackTrace = ex.StackTrace,
+                Source = ex.Source
+            })
             {
                 StatusCode = 500
             }
