@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using PersonalBlog.BLL.Interfaces;
+using PersonalBlog.BLL.Interfaces.Auth;
 using PersonalBlog.DAL.Entities.Auth;
 
-namespace PersonalBlog.BLL.Services;
+namespace PersonalBlog.BLL.Services.Auth;
 
 public class RoleService : IRoleService
 {

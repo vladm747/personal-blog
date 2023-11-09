@@ -4,15 +4,21 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using PersonalBlog.API.Filters;
 using PersonalBlog.API.Helpers;
 using PersonalBlog.BLL.Interfaces;
+using PersonalBlog.BLL.Interfaces.Auth;
+using PersonalBlog.BLL.Profiles;
 using PersonalBlog.BLL.Services;
+using PersonalBlog.BLL.Services.Auth;
 using PersonalBlog.DAL.Context;
 using PersonalBlog.DAL.Entities.Auth;
+using PersonalBlog.DAL.Infrastructure.DI.Abstract;
+using PersonalBlog.DAL.Infrastructure.DI.Implementations;
 
 namespace PersonalBlog.API.Startup;
 
-public static partial class ServiceInitializer
+public static class ServiceInitializer
 {
     public static IServiceCollection RegisterApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
@@ -22,11 +28,19 @@ public static partial class ServiceInitializer
     }
     public static void RegisterCustomDependencies(IServiceCollection services, IConfiguration configuration)
     {
+        services.AddAutoMapper(typeof(AutoMapperProfiles));
         services.AddDbContext<PersonalBlogContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("PersonalBlog")));
         
         services.AddScoped<IAuthService, AuthService>();  
-        services.AddScoped<IRoleService, RoleService>();  
+        services.AddScoped<IRoleService, RoleService>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<ICommentService, CommentService>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
+        services.AddScoped<IBlogService, BlogService>();
+        services.AddScoped<IBlogRepository, BlogRepository>();
+        services.AddScoped<IPostService, PostService>();
+        services.AddScoped<IPostRepository, PostRepository>();
         
         services.AddCors(options =>
         {
@@ -37,7 +51,7 @@ public static partial class ServiceInitializer
                 });
         });
         
-        services.AddControllers();
+        services.AddControllers(options => options.Filters.Add<PersonalBlogExceptionFilterAttribute>());
         services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -71,9 +85,9 @@ public static partial class ServiceInitializer
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidIssuer = jwtSettings.Issuer,
-                    ValidAudience = jwtSettings.Issuer,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret)),
+                    ValidIssuer = jwtSettings?.Issuer,
+                    ValidAudience = jwtSettings?.Issuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings?.Secret)),
                     ClockSkew = TimeSpan.Zero
                 };
             });
