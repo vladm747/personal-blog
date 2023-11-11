@@ -11,6 +11,8 @@ using PersonalBlog.BLL.Interfaces.Auth;
 using PersonalBlog.BLL.Profiles;
 using PersonalBlog.BLL.Services;
 using PersonalBlog.BLL.Services.Auth;
+using PersonalBlog.BLL.Subscription.Interfaces;
+using PersonalBlog.BLL.Subscription.Services;
 using PersonalBlog.DAL.Context;
 using PersonalBlog.DAL.Entities.Auth;
 using PersonalBlog.DAL.Infrastructure.DI.Abstract;
@@ -32,7 +34,9 @@ public static class ServiceInitializer
         services.AddDbContext<PersonalBlogContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("PersonalBlog")));
         
-        services.AddScoped<IAuthService, AuthService>();  
+        services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<ISubscriptionService, SubscriptionService>();
+        services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
         services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ICommentService, CommentService>();

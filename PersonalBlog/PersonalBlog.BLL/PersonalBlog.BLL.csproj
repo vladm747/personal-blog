@@ -16,4 +16,9 @@
       <ProjectReference Include="..\PersonalBlog.DAL\PersonalBlog.DAL.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Interfaces\Subscription\" />
+      <Folder Include="Subscription\Models\" />
+    </ItemGroup>
+
 </Project>
