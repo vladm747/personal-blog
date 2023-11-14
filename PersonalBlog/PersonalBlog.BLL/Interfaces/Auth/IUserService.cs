@@ -6,5 +6,9 @@ namespace PersonalBlog.BLL.Interfaces.Auth;
 
 public interface IUserService
 {
-    public Task<IdentityResult> DeleteAsync(ClaimsPrincipal user, string email);
+    Task<IEnumerable<UserDTO>> GetAllAsync();
+    string GetUserId(ClaimsPrincipal userPrincipal);
+    IEnumerable<string> GetUsersEmails(IEnumerable<string> ids);
+    string GetNickName(ClaimsPrincipal userPrincipal);
+    Task<IdentityResult> DeleteAsync(ClaimsPrincipal user, string email);
 }

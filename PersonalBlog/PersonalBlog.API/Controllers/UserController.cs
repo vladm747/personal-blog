@@ -13,6 +13,12 @@ namespace PersonalBlog.API.Controllers
         {
             _service = service;
         }
+
+        [HttpGet("users")] public async Task<IActionResult> GetAllUsersAsync()
+        {
+            var result = await _service.GetAllAsync();
+            return Ok(result);
+        }
         
         [HttpDelete("user")]
         public async Task<IActionResult> DeleteAccount(string email)
