@@ -3,15 +3,20 @@ using PersonalBlog.DAL.Infrastructure.DI.Abstract.Base;
 
 namespace PersonalBlog.DAL.Infrastructure.DI.Implementations.Base;
 
-public abstract class RepositoryBase<TKey, TEntity> : IRepositoryBase<TKey, TEntity> where TEntity: class
+public abstract class RepositoryBase<TKey, TEntity> : IRepositoryBase<TKey, TEntity> 
+    where TEntity: class
+    where TKey : IEquatable<TKey>
 {
-    private readonly DbContext _dbContext;
+    private readonly bool _disposeContext;
+    private bool _isDisposed;
+    private DbContext Context { get; set; }
     public DbSet<TEntity> Table { get; }
 
     protected RepositoryBase(DbContext dbContext)
     {
-        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-        Table = _dbContext.Set<TEntity>();
+        Context = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        Table = Context.Set<TEntity>();
+        _disposeContext = false;
     }
 
     public virtual IEnumerable<TEntity> GetAll()
@@ -32,18 +37,41 @@ public abstract class RepositoryBase<TKey, TEntity> : IRepositoryBase<TKey, TEnt
     public async Task CreateAsync(TEntity item)
     {
         var entityEntry = await Table.AddAsync(item);
-        await _dbContext.SaveChangesAsync();
+        await Context.SaveChangesAsync();
     }
 
     public async Task UpdateAsync(TEntity item)
     {
-       _dbContext.Entry(item).State = EntityState.Modified;
-       await _dbContext.SaveChangesAsync();
+        Context.Entry(item).State = EntityState.Modified;
+       await Context.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(TEntity item)
     {
         Table.Remove(item);
-        await _dbContext.SaveChangesAsync();
+        await Context.SaveChangesAsync();
     }
+    
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_isDisposed)
+            return;
+
+        if (disposing && _disposeContext)
+            Context.Dispose();
+
+        _isDisposed = true;
+    }
+
+    ~RepositoryBase()
+    {
+        Dispose(true);
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
 }

@@ -32,7 +32,8 @@ namespace PersonalBlog.API.Controllers
         [HttpPost("post")]
         public async Task<IActionResult> CreateComment([FromBody] PostDTO post)
         {
-            await _service.CreateAsync(post);
+            var userPrincipal = HttpContext.User;
+            await _service.CreateAsync(userPrincipal, post);
             return Ok();
         }
         

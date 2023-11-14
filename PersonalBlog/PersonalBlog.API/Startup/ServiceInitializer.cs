@@ -34,17 +34,18 @@ public static class ServiceInitializer
         services.AddDbContext<PersonalBlogContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("PersonalBlog")));
         
+        services.AddScoped<DbContext, PersonalBlogContext>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<ISubscriptionService, SubscriptionService>();
         services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
         services.AddScoped<IRoleService, RoleService>();
-        services.AddScoped<IUserService, UserService>();
         services.AddScoped<ICommentService, CommentService>();
         services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<IBlogService, BlogService>();
         services.AddScoped<IBlogRepository, BlogRepository>();
         services.AddScoped<IPostService, PostService>();
         services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<IUserService, UserService>();
         
         services.AddCors(options =>
         {

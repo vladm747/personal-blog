@@ -46,7 +46,7 @@ public class CommentService: ICommentService
 
     public async Task DeleteAsync(int commentId)
     {
-        var entity = await GetByIdAsync(commentId);
+        var entity = await _repo.FindByKeyAsync(commentId);
 
         if (entity == null)
             throw new InvalidOperationException("The entity you are trying to delete does not exist in database!");

@@ -1,6 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
 using PersonalBlog.BLL.DTO;
 using PersonalBlog.BLL.Interfaces;
+using PersonalBlog.BLL.Interfaces.Auth;
+using PersonalBlog.BLL.Subscription.Interfaces;
 using PersonalBlog.DAL.Entities;
 using PersonalBlog.DAL.Infrastructure.DI.Abstract;
 
@@ -10,11 +13,14 @@ public class PostService: IPostService
 {
     private readonly IPostRepository _repo;
     private readonly IMapper _mapper;
+    private readonly ISubscriptionService _subscription;
     
-    public PostService(IPostRepository repo, IMapper mapper)
+    public PostService(IPostRepository repo, IMapper mapper, ISubscriptionService subscription,
+        IUserService userService)
     {
         _repo = repo;
         _mapper = mapper;
+        _subscription = subscription;
     }
     
     public async Task<IEnumerable<PostDTO>> GetAllAsync(int blogId)
@@ -34,24 +40,30 @@ public class PostService: IPostService
         return _mapper.Map<PostDTO>(post);
     }
 
-    public async Task CreateAsync(PostDTO entity)
+    public async Task CreateAsync(ClaimsPrincipal userPrincipal, PostDTO entity)
     {
         if (entity == null)
             throw new ArgumentNullException("the entity you are trying create is null");
         
         var post = _mapper.Map<Post>(entity);
-        await _repo.CreateAsync(post);
+        try
+        {
+            await _repo.CreateAsync(post);
+        }
+        finally
+        {
+            _subscription.Notify(userPrincipal, entity.BlogId);
+        }
     }
 
     public async Task DeleteAsync(int postId)
     {
-        var entity = await GetByIdAsync(postId);
+        var entity = await _repo.FindByKeyAsync(postId);
 
         if (entity == null)
             throw new InvalidOperationException("The entity you are trying to delete does not exist in database!");
         
-        var post = _mapper.Map<Post>(entity);
-        await _repo.DeleteAsync(post);
+        await _repo.DeleteAsync(entity);
     }
 
     public async Task UpdateAsync(PostDTO entity)

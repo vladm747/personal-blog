@@ -15,10 +15,10 @@ namespace PersonalBlog.API.Controllers
         }
 
         [HttpGet("subscriptions")]
-        public async Task<IActionResult> GetSubscriptions()
+        public IActionResult GetSubscriptions()
         {
             var userPrincipal = HttpContext.User;
-            var result = await _service.GetSubscriptions(userPrincipal);
+            var result = _service.GetSubscriptions(userPrincipal);
             return Ok(result);
         }
 

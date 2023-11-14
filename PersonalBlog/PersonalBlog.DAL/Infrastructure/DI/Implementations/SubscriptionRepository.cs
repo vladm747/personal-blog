@@ -8,13 +8,19 @@ namespace PersonalBlog.DAL.Infrastructure.DI.Implementations;
 public class SubscriptionRepository: ISubscriptionRepository
 {
     private readonly PersonalBlogContext _database;
+    private ISubscriptionRepository _subscriptionRepositoryImplementation;
 
     public SubscriptionRepository(PersonalBlogContext database) =>
         _database = database;
-    
 
-    public async Task<IEnumerable<int>> GetSubscriptionsAsync(string userId) =>
-        await _database.Subscriptions.Select(item => item.BlogId).ToListAsync();
+
+    public IEnumerable<string> GetSubscribers(int blogId) =>
+        _database.Subscriptions.Where(subs => subs.BlogId == blogId)
+            .Select(item => item.UserId).AsNoTracking().ToList();
+
+
+    public IEnumerable<int> GetSubscriptions(string userId) =>
+        _database.Subscriptions.Select(item => item.BlogId).ToList();
 
     public async Task<Subscription> GetSubscriptionAsync(string userId, int blogId) =>
         await _database.Subscriptions.Where(subscription =>
