@@ -4,14 +4,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c0a3f5f-0aef-48e0-97c0-52b9b09706a2" name="Changes" comment="" />
+    <list default="true" id="2c0a3f5f-0aef-48e0-97c0-52b9b09706a2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/Login.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/Register.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/navbar/navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/.eslintrc.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/assets/react.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/main.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/vite-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/tsconfig.node.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/vite.config.ts" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -21,22 +54,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "FrontEndImplementation",
-    "last_opened_file_path": "E:/aProjects/PersonalBlog/personal-blog/PersonalBlog",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "E:\\aProjects\\PersonalBlog\\personal-blog\\PersonalBlog\\PersonalBlog.FrontEnd\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;FrontEndImplementation&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/aProjects/PersonalBlog/personal-blog/PersonalBlog&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\aProjects\\PersonalBlog\\personal-blog\\PersonalBlog\\PersonalBlog.FrontEnd\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+        <entry key="com.haulmont.rcb.storybook" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/PersonalBlog.FrontEnd/package.json" />
@@ -74,7 +117,11 @@
       <option name="presentableId" value="Default" />
       <updated>1700224081419</updated>
       <workItem from="1700224082457" duration="616000" />
-      <workItem from="1700728695550" duration="549000" />
+      <workItem from="1700728695550" duration="1140000" />
+      <workItem from="1701256013656" duration="1869000" />
+      <workItem from="1701524732858" duration="3080000" />
+      <workItem from="1701532055182" duration="99000" />
+      <workItem from="1701532211131" duration="2095000" />
     </task>
     <servers />
   </component>
