@@ -4,28 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c0a3f5f-0aef-48e0-97c0-52b9b09706a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/Login.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/Register.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/navbar/navbar.jsx" afterDir="false" />
+    <list default="true" id="2c0a3f5f-0aef-48e0-97c0-52b9b09706a2" name="Changes" comment="replace react ts with js">
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogListComponent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/AuthService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/BlogService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/CommentService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/PostService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/UserService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PersonalBlog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PersonalBlog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/.eslintrc.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/public/vite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/assets/react.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/main.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/src/vite-env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/tsconfig.node.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/Controllers/PostController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/Startup/MiddlewareInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/Startup/MiddlewareInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/Startup/ServiceInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/Startup/ServiceInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.BLL/DTO/BlogDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.BLL/DTO/BlogDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.BLL/DTO/PostDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.BLL/DTO/PostDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.BLL/Profiles/AutoMapperProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.BLL/Profiles/AutoMapperProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.DAL/Infrastructure/DI/Implementations/BlogRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.DAL/Infrastructure/DI/Implementations/BlogRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.DAL/Infrastructure/DI/Implementations/PostRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.DAL/Infrastructure/DI/Implementations/PostRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/Login.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/AuthComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/posts/PostListComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/navbar/navbar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +45,7 @@
       <list>
         <option value="TypeScript JSX File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -54,38 +63,76 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;FrontEndImplementation&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/aProjects/PersonalBlog/personal-blog/PersonalBlog&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\aProjects\\PersonalBlog\\personal-blog\\PersonalBlog\\PersonalBlog.FrontEnd\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.BlogListComponent.jsx.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "FrontEndImplementation",
+    "last_opened_file_path": "E:/aProjects/2050_blue_spark",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build (1).executor": "Run",
+    "npm.dev (1).executor": "Run",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "E:\\JetBrains\\WebStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
         <entry key="com.haulmont.rcb.reactComponents" value="false" />
         <entry key="com.haulmont.rcb.reactInspector" value="false" />
         <entry key="com.haulmont.rcb.storybook" value="false" />
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RecentsManager">
+    <key name="es6.move.members.recent.items">
+      <recent name="E:\aProjects\PersonalBlog\personal-blog\PersonalBlog\PersonalBlog.FrontEnd\personal-blog-frontend\src\services\CommentService.js" />
+      <recent name="E:\aProjects\PersonalBlog\personal-blog\PersonalBlog\PersonalBlog.FrontEnd\personal-blog-frontend\src\services\AuthService.js" />
+      <recent name="E:\aProjects\PersonalBlog\personal-blog\PersonalBlog\PersonalBlog.FrontEnd\personal-blog-frontend\src\services\UserService.js" />
+      <recent name="E:\aProjects\PersonalBlog\personal-blog\PersonalBlog\PersonalBlog.FrontEnd\personal-blog-frontend\src\services\PostService.js" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev (1)">
+    <configuration name="BlogListComponent.jsx" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogListComponent.jsx" working-dir="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs">
+      <method v="2" />
+    </configuration>
+    <configuration name="build (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/PersonalBlog.FrontEnd/package.json" />
       <command value="run" />
       <scripts>
         <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -103,6 +150,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev (1)" />
+        <item itemvalue="Node.js.BlogListComponent.jsx" />
+        <item itemvalue="npm.build (1)" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
@@ -122,10 +172,34 @@
       <workItem from="1701524732858" duration="3080000" />
       <workItem from="1701532055182" duration="99000" />
       <workItem from="1701532211131" duration="2095000" />
+      <workItem from="1701881139764" duration="1441000" />
+      <workItem from="1701883329304" duration="87000" />
+      <workItem from="1701942269634" duration="5714000" />
+      <workItem from="1702047454154" duration="41000" />
+      <workItem from="1702131251405" duration="4933000" />
+      <workItem from="1702225109503" duration="33000" />
+      <workItem from="1703156836255" duration="31000" />
+      <workItem from="1703156913645" duration="19946000" />
+      <workItem from="1703195939420" duration="9000" />
+      <workItem from="1703253307204" duration="746000" />
+      <workItem from="1703262283413" duration="754000" />
     </task>
+    <task id="LOCAL-00001" summary="replace react ts with js">
+      <option name="closed" value="true" />
+      <created>1701882127325</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701882127325</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="replace react ts with js" />
+    <option name="LAST_COMMIT_MESSAGE" value="replace react ts with js" />
   </component>
 </project>

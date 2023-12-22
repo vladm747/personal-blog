@@ -49,10 +49,10 @@ public static class ServiceInitializer
         
         services.AddCors(options =>
         {
-            options.AddPolicy(name: "_myAllowSpecificOrigins",
+            options.AddPolicy(name: "MyAllowSpecificOrigins",
                 policy  =>
                 {
-                    policy.WithOrigins("http://localhost:5189");
+                    policy.WithOrigins("http://localhost:5173");
                 });
         });
         
