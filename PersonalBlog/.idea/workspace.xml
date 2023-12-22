@@ -4,34 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c0a3f5f-0aef-48e0-97c0-52b9b09706a2" name="Changes" comment="replace react ts with js">
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogListComponent.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/AuthService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/BlogService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/CommentService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/PostService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/services/UserService.js" afterDir="false" />
+    <list default="true" id="2c0a3f5f-0aef-48e0-97c0-52b9b09706a2" name="Changes" comment="replace react ts with js.&#10;add routing and blog component">
       <change beforePath="$PROJECT_DIR$/.idea/PersonalBlog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PersonalBlog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/Controllers/PostController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/Startup/MiddlewareInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/Startup/MiddlewareInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/Startup/ServiceInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/Startup/ServiceInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.API/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.API/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.BLL/DTO/BlogDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.BLL/DTO/BlogDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.BLL/DTO/PostDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.BLL/DTO/PostDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.BLL/Profiles/AutoMapperProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.BLL/Profiles/AutoMapperProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.DAL/Infrastructure/DI/Implementations/BlogRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.DAL/Infrastructure/DI/Implementations/BlogRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.DAL/Infrastructure/DI/Implementations/PostRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.DAL/Infrastructure/DI/Implementations/PostRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/Login.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/auth/AuthComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/posts/PostListComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/navbar/navbar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogListComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogListComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/main.jsx" afterDir="false" />
     </list>
@@ -70,6 +50,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "FrontEndImplementation",
+    "javascript.nodejs.core.library.configured.version": "18.15.0",
+    "javascript.nodejs.core.library.typings.version": "18.15.13",
     "last_opened_file_path": "E:/aProjects/2050_blue_spark",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -77,6 +59,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.build (1).executor": "Run",
+    "npm.build:css.executor": "Run",
     "npm.dev (1).executor": "Run",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -104,7 +87,7 @@
       <recent name="E:\aProjects\PersonalBlog\personal-blog\PersonalBlog\PersonalBlog.FrontEnd\personal-blog-frontend\src\services\PostService.js" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev (1)">
+  <component name="RunManager" selected="npm.build:css">
     <configuration name="BlogListComponent.jsx" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs/BlogListComponent.jsx" working-dir="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/src/components/blogs">
       <method v="2" />
     </configuration>
@@ -118,11 +101,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/PersonalBlog.FrontEnd/package.json" />
+    <configuration name="build:css" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/PersonalBlog.FrontEnd/personal-blog-frontend/package.json" />
       <command value="run" />
       <scripts>
-        <script value="build" />
+        <script value="build:css" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -150,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build:css" />
         <item itemvalue="npm.dev (1)" />
-        <item itemvalue="Node.js.BlogListComponent.jsx" />
         <item itemvalue="npm.build (1)" />
+        <item itemvalue="Node.js.BlogListComponent.jsx" />
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -182,7 +165,7 @@
       <workItem from="1703156913645" duration="19946000" />
       <workItem from="1703195939420" duration="9000" />
       <workItem from="1703253307204" duration="746000" />
-      <workItem from="1703262283413" duration="754000" />
+      <workItem from="1703262283413" duration="6969000" />
     </task>
     <task id="LOCAL-00001" summary="replace react ts with js">
       <option name="closed" value="true" />
@@ -192,14 +175,61 @@
       <option name="project" value="LOCAL" />
       <updated>1701882127325</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="replace react ts with js.&#10;add routing and blog component">
+      <option name="closed" value="true" />
+      <created>1703263356179</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703263356179</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="FrontEndImplementation" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="FrontEndImplementation" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="replace react ts with js" />
-    <option name="LAST_COMMIT_MESSAGE" value="replace react ts with js" />
+    <MESSAGE value="replace react ts with js.&#10;add routing and blog component" />
+    <option name="LAST_COMMIT_MESSAGE" value="replace react ts with js.&#10;add routing and blog component" />
   </component>
 </project>

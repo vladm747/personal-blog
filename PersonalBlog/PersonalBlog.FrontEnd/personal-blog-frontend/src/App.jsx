@@ -16,24 +16,25 @@ class App extends Component {
         this.state = { }
 
     }
-    render (){
+    render () {
         console.log("app.js");
        return (
            <>
-               <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                   <div className="navbar-nav">
-                       <div className="nav-item nav-link">
-                           <Link style={linkStyle} to="/">List of Blogs</Link>
-                       </div>
-                       <div className="nav-item nav-link">
-                           <Link style={linkStyle} to="auth/login/">Login</Link>
-                       </div>
-                       <div className="nav-item nav-link">
-                           <Link style={linkStyle} to="auth/register/">Register</Link>
+               <nav className="bg-gray-800">
+                   <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                       <div className="relative flex h-16 items-center justify-between">
+                           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                               <div className="hidden sm:ml-6 sm:block">
+                                   <div className="flex space-x-4">
+                                       <Link className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="/">List of Blogs</Link>
+                                       <Link className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="auth/login/">Login</Link>
+                                       <Link className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="auth/register/">Register</Link>
+                                   </div>
+                               </div>
+                           </div>
                        </div>
                    </div>
                </nav>
-
                <Routes>
                    <Route path="/" element={<BlogListComponent/>}/>
                    <Route path="/auth" element={<AuthComponent/>}/>

@@ -19,6 +19,9 @@ public class JwtHelper
             new Claim(ClaimTypes.Name, user.NickName!),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Role, "ADMIN"),
+            new Claim(ClaimTypes.Role, "AUTHOR"),
+            new Claim(ClaimTypes.Role, "USER")
         };
 
         var roleClaims = roles.Select(r => new Claim(ClaimTypes.Role, r));
@@ -31,7 +34,7 @@ public class JwtHelper
         var token = new JwtSecurityToken(
             issuer: jwtSettings.Issuer,
             audience: jwtSettings.Issuer,
-            claims,
+            claims: claims,
             expires: expires,
             signingCredentials: creds
         );
