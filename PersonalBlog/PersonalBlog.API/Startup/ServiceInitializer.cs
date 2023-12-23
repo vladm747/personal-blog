@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PersonalBlog.API.Filters;
-using PersonalBlog.API.Helpers;
+using PersonalBlog.BLL.Helpers;
 using PersonalBlog.BLL.Interfaces;
 using PersonalBlog.BLL.Interfaces.Auth;
 using PersonalBlog.BLL.Profiles;
@@ -46,6 +46,7 @@ public static class ServiceInitializer
         services.AddScoped<IPostService, PostService>();
         services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<ITokenService, TokenService>();
         
         services.AddCors(options =>
         {
@@ -96,10 +97,6 @@ public static class ServiceInitializer
                     ClockSkew = TimeSpan.Zero
                 };
             });
-
-        
-       
-        
     }
 
     private static void RegisterSwagger(IServiceCollection services)

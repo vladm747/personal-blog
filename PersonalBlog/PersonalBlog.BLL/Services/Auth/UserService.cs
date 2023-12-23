@@ -3,6 +3,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PersonalBlog.BLL.DTO.Auth;
+using PersonalBlog.BLL.Exceptions;
 using PersonalBlog.BLL.Interfaces.Auth;
 using PersonalBlog.DAL.Entities.Auth;
 
@@ -11,13 +12,23 @@ namespace PersonalBlog.BLL.Services.Auth;
 public class UserService: IUserService
 {
     private readonly UserManager<User> _userManager;
-    private IUserService _userServiceImplementation;
     private readonly IMapper _mapper;
 
     public UserService(UserManager<User> manager, IMapper mapper)
     {
         _userManager = manager;
         _mapper = mapper;
+    }
+
+    public User GetUserById(ClaimsPrincipal userPrincipal)
+    {
+        var userId = _userManager.GetUserId(userPrincipal);
+        var user = _userManager.Users.SingleOrDefault(user => user.Id == userId);
+        
+        if (user == null)
+            throw new UserNotFoundException("User Not Found");
+        
+        return user;
     }
 
     public async Task<IEnumerable<UserDTO>> GetAllAsync()
@@ -46,11 +57,9 @@ public class UserService: IUserService
     public async Task<IdentityResult> DeleteAsync(ClaimsPrincipal userPrincipal, string email)
     {
         var user = await _userManager.GetUserAsync(userPrincipal);
+        
         if (user == null)
-            throw new Exception("cant get user");
-
-        if (user.Email != email)
-            throw new UnauthorizedAccessException("You can't delete another user.");
+            throw new UserNotFoundException("User Not Found");
 
         var result = await _userManager.DeleteAsync(user);
         return result;
