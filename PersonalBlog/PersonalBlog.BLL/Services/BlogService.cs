@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using PersonalBlog.BLL.DTO;
+using PersonalBlog.Common.DTO;
 using PersonalBlog.BLL.Interfaces;
 using PersonalBlog.DAL.Entities;
-using PersonalBlog.DAL.Entities.Auth;
 using PersonalBlog.DAL.Infrastructure.DI.Abstract;
 
 namespace PersonalBlog.BLL.Services;

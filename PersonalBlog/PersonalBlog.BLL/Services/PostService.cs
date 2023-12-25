@@ -1,6 +1,5 @@
-﻿using System.Security.Claims;
-using AutoMapper;
-using PersonalBlog.BLL.DTO;
+﻿using AutoMapper;
+using PersonalBlog.Common.DTO;
 using PersonalBlog.BLL.Interfaces;
 using PersonalBlog.BLL.Interfaces.Auth;
 using PersonalBlog.BLL.Subscription.Interfaces;

@@ -1,4 +1,4 @@
-﻿using PersonalBlog.BLL.DTO;
+﻿using PersonalBlog.Common.DTO;
 
 namespace PersonalBlog.BLL.Interfaces;
 

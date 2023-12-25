@@ -1,4 +1,4 @@
-﻿namespace PersonalBlog.BLL.DTO;
+﻿namespace PersonalBlog.Common.DTO;
 
 public class BlogDTO
 {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using PersonalBlog.BLL.DTO;
+using PersonalBlog.Common.DTO;
 using PersonalBlog.BLL.Interfaces;
 using PersonalBlog.DAL.Entities;
 using PersonalBlog.DAL.Infrastructure.DI.Abstract;
