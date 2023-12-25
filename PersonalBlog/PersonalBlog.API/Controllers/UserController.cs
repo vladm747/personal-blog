@@ -1,4 +1,3 @@
-using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using PersonalBlog.BLL.Interfaces.Auth;
 
@@ -21,26 +20,26 @@ namespace PersonalBlog.API.Controllers
             
             return Ok(result);
         }
-
-        // [HttpGet("users")]
-        // public async Task<IActionResult> GetAllUsersAsync()
-        // {
-        //     var result = await _service.GetAllAsync();
-        //     return Ok(result);
-        // }
-        //
-        // [HttpDelete("user")]
-        // public async Task<IActionResult> DeleteAccount(string email)
-        // {
-        //     var result = await _service.DeleteAsync(HttpContext.User, email);
-        //
-        //     switch (result.Succeeded)
-        //     {
-        //         case true:
-        //             return Ok();
-        //         case false:
-        //             return BadRequest(result.Errors.ToString());
-        //     }
-        // } 
+        
+        [HttpGet("users")]
+        public async Task<IActionResult> GetAllUsersAsync()
+        {
+            var result = await _service.GetAllAsync();
+            return Ok(result);
+        }
+        
+        [HttpDelete("user")]
+        public async Task<IActionResult> DeleteAccount(string email)
+        {
+            var result = await _service.DeleteAsync(HttpContext.User, email);
+        
+            switch (result.Succeeded)
+            {
+                case true:
+                    return Ok();
+                case false:
+                    return BadRequest(result.Errors.ToString());
+            }
+        } 
     }
 }

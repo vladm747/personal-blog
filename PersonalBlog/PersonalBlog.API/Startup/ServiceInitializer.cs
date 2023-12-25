@@ -53,7 +53,7 @@ public static class ServiceInitializer
             options.AddPolicy(name: "AllowAllOrigins",
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:5173");
+                    builder.WithOrigins("http://localhost:5173", "http://localhost:5189");
                     builder.AllowAnyHeader();
                     builder.AllowAnyMethod();
                     builder.AllowCredentials();

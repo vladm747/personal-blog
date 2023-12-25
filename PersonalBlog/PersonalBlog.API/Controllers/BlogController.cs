@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PersonalBlog.BLL.Interfaces;
@@ -34,6 +35,7 @@ namespace PersonalBlog.API.Controllers
             return Ok(blog);
         }
         
+        [Authorize(Roles = "author")]
         [HttpPost("blog")]
         public async Task<IActionResult> CreateAsync(string userId)
         {
@@ -45,7 +47,7 @@ namespace PersonalBlog.API.Controllers
             await _service.CreateAsync(userId);
             return Ok();
         }
-
+        [Authorize(Roles = "author")]
         [HttpDelete("blog/{blogId}")]
         public async Task<IActionResult> DeleteAsync(int blogId)
         {

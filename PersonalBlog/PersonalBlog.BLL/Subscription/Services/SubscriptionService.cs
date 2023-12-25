@@ -79,16 +79,16 @@ public class SubscriptionService: ISubscriptionService
                 {
                     Text = "Dear Subscriber, visit our site to check out new updates!"
                 };
-            }
+                
+                using (var client = new SmtpClient())
+                {
+                    client.Connect("smtp.ethereal.email", 587, SecureSocketOptions.StartTls);
+                    client.AuthenticationMechanisms.Remove("XOAUTH2");
 
-            using (var client = new SmtpClient())
-            {
-                client.Connect("smtp.ethereal.email", 587, SecureSocketOptions.StartTls);
-                client.AuthenticationMechanisms.Remove("XOAUTH2");
-
-                client.Authenticate("arch.bergstrom@ethereal.email", "wWMydCRVzjuWuTMvTh");
-                client.Send(message);
-                client.Disconnect(true);
+                    client.Authenticate("arch.bergstrom@ethereal.email", "wWMydCRVzjuWuTMvTh");
+                    client.Send(message);
+                    client.Disconnect(true);
+                }
             }
         }
         catch (Exception ex)

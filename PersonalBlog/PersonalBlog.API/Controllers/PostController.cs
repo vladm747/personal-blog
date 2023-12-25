@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PersonalBlog.BLL.DTO;
 using PersonalBlog.BLL.Interfaces;
@@ -28,7 +29,8 @@ namespace PersonalBlog.API.Controllers
             var posts = await _service.GetByIdAsync(id);
             return Ok(posts);
         }
-
+        
+        [Authorize(Roles = "author")]
         [HttpPost("post")]
         public async Task<IActionResult> CreatePost([FromBody] PostDTO post)
         {
@@ -37,6 +39,7 @@ namespace PersonalBlog.API.Controllers
             return Ok();
         }
         
+        [Authorize(Roles = "author")]
         [HttpPut("post")]
         public async Task<IActionResult> UpdateAsync(int id, PostDTO post)
         {
@@ -46,6 +49,7 @@ namespace PersonalBlog.API.Controllers
             return Ok();
         }
         
+        [Authorize(Roles = "author")]
         [HttpDelete("post/{postId}")]
         public async Task<IActionResult> DeleteAsync(int postId)
         {

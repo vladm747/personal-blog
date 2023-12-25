@@ -72,6 +72,9 @@ public class UserService: IUserService
         if (user == null)
             throw new UserNotFoundException("User Not Found");
 
+        if (user.Email != email)
+            throw new NotAllowedException("You have no permission to delete this user");
+
         var result = await _userManager.DeleteAsync(user);
         return result;
     }

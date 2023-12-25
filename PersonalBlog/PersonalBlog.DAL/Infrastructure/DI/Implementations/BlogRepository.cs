@@ -16,7 +16,9 @@ public class BlogRepository: IBlogRepository
 
     public async Task<IEnumerable<Blog>> GetAllAsync()
     {
-        return await _context.Blogs.Include(blog => blog.User).ToListAsync();
+        return await _context.Blogs
+            .Include(blog => blog.User)
+            .Include(blog => blog.Posts).ToListAsync();
     }
 
     public async Task<Blog> CreateAsync(Blog entity)

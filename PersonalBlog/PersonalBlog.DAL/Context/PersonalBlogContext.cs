@@ -36,38 +36,30 @@ public class PersonalBlogContext: IdentityDbContext<User>
         });
 
         modelBuilder.Entity<User>()
-            .HasOne(item => item.Blog)
-            .WithOne(item => item.User)
-            .OnDelete(DeleteBehavior.ClientCascade)
-            .IsRequired();
-        
-        modelBuilder.Entity<Blog>()
-            .HasOne(item => item.User)
-            .WithOne(item => item.Blog)
-            .OnDelete(DeleteBehavior.NoAction)
-            .IsRequired();
+            .HasOne(e => e.Blog)
+            .WithOne(e => e.User)
+            .HasForeignKey<Blog>(e => e.UserId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
         
         modelBuilder.Entity<Blog>()
             .HasMany(item => item.Posts)
             .WithOne(item => item.Blog)
-            .OnDelete(DeleteBehavior.ClientCascade)
+            .HasForeignKey(e => e.BlogId)
+            .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
         modelBuilder.Entity<Post>()
-            .HasOne(item => item.User)
-            .WithMany(item => item.Posts)
-            .OnDelete(DeleteBehavior.NoAction)
-            .IsRequired();
-        
-        modelBuilder.Entity<Post>()
             .HasMany(item => item.Comments)
             .WithOne(item => item.Post)
-            .OnDelete(DeleteBehavior.ClientCascade)
+            .HasForeignKey(e => e.PostId)
+            .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
         
         modelBuilder.Entity<Comment>()
             .HasOne(item => item.User)
             .WithMany(item => item.Comments)
+            .HasForeignKey(item => item.UserId)
             .OnDelete(DeleteBehavior.NoAction)
             .IsRequired();
 
