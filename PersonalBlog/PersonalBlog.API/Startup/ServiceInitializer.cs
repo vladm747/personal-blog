@@ -11,12 +11,16 @@ using PersonalBlog.BLL.Interfaces.Auth;
 using PersonalBlog.BLL.Profiles;
 using PersonalBlog.BLL.Services;
 using PersonalBlog.BLL.Services.Auth;
+using PersonalBlog.API.Extensions;
 using PersonalBlog.BLL.Subscription.Interfaces;
 using PersonalBlog.BLL.Subscription.Services;
+using PersonalBlog.Common.Models;
 using PersonalBlog.DAL.Context;
 using PersonalBlog.DAL.Entities.Auth;
 using PersonalBlog.DAL.Infrastructure.DI.Abstract;
 using PersonalBlog.DAL.Infrastructure.DI.Implementations;
+using PersonalBlog.FluentEmail.Interfaces;
+using PersonalBlog.FluentEmail.Services;
 
 namespace PersonalBlog.API.Startup;
 
@@ -47,6 +51,7 @@ public static class ServiceInitializer
         services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IEmailService, EmailService>();
         
         services.AddCors(options =>
         {
@@ -59,7 +64,7 @@ public static class ServiceInitializer
                     builder.AllowCredentials();
                 });
         });
-        
+        services.AddFluentEmail(configuration);
         services.AddControllers(options => options.Filters.Add<PersonalBlogExceptionFilterAttribute>());
         services.AddIdentity<User, IdentityRole>(options =>
             {
@@ -74,6 +79,7 @@ public static class ServiceInitializer
             opt.TokenLifespan = TimeSpan.FromHours(1));
 
         services.Configure<JwtSettings>(configuration.GetSection("Jwt"));
+        services.Configure<MessageSettings>(configuration.GetSection("EmailSettings"));
         
         var jwtSettings = configuration.GetSection("Jwt").Get<JwtSettings>();
         services
@@ -100,6 +106,7 @@ public static class ServiceInitializer
                     ClockSkew = TimeSpan.Zero
                 };
             });
+        
     }
 
     private static void RegisterSwagger(IServiceCollection services)

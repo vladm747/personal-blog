@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <PreserveCompilationContext>true</PreserveCompilationContext>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,6 +16,8 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+      <PackageReference Include="FluentEmail.Razor" Version="3.0.2" />
+      <PackageReference Include="FluentEmail.Smtp" Version="3.0.2" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.12" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
         <PrivateAssets>all</PrivateAssets>
@@ -29,6 +32,7 @@
     <ItemGroup>
       <ProjectReference Include="..\PersonalBlog.BLL\PersonalBlog.BLL.csproj" />
       <ProjectReference Include="..\PersonalBlog.DAL\PersonalBlog.DAL.csproj" />
+      <ProjectReference Include="..\PersonalBlog.API.FluentEmail\PersonalBlog.API.FluentEmail.csproj" />
     </ItemGroup>
 
 </Project>
