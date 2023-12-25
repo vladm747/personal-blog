@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using PersonalBlog.API.Models;
-using PersonalBlog.BLL.DTO.Auth;
+using PersonalBlog.Common.DTO.Auth;
 using PersonalBlog.BLL.Helpers;
 using PersonalBlog.BLL.Interfaces.Auth;
 using PersonalBlog.DAL.Entities.Auth;

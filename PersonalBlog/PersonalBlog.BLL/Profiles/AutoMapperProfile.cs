@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PersonalBlog.BLL.DTO;
-using PersonalBlog.BLL.DTO.Auth;
+using PersonalBlog.Common.DTO.Auth;
 using PersonalBlog.DAL.Entities;
 using PersonalBlog.DAL.Entities.Auth;
 

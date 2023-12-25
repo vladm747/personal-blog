@@ -2,7 +2,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using PersonalBlog.BLL.DTO.Auth;
+using PersonalBlog.Common.DTO.Auth;
 using PersonalBlog.BLL.Exceptions;
 using PersonalBlog.BLL.Interfaces.Auth;
 using PersonalBlog.DAL.Entities.Auth;
