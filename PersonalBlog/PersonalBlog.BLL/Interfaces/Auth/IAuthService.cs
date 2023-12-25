@@ -1,4 +1,4 @@
-﻿using PersonalBlog.BLL.DTO.Auth;
+﻿using PersonalBlog.Common.DTO.Auth;
 using PersonalBlog.DAL.Entities.Auth;
 
 namespace PersonalBlog.BLL.Interfaces.Auth;

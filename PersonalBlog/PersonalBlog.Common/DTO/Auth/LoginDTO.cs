@@ -1,4 +1,4 @@
-﻿namespace PersonalBlog.BLL.DTO.Auth;
+﻿namespace PersonalBlog.Common.DTO.Auth;
 
 public class LoginDTO
 {

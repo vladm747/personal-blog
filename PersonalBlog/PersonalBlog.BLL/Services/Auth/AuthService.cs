@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using PersonalBlog.BLL.DTO.Auth;
+using PersonalBlog.Common.DTO.Auth;
 using PersonalBlog.BLL.Exceptions;
 using PersonalBlog.BLL.Helpers;
 using PersonalBlog.BLL.Interfaces;

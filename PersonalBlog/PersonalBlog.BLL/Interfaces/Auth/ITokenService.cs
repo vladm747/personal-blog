@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
-using PersonalBlog.BLL.DTO.Auth;
+using PersonalBlog.Common.DTO.Auth;
 using PersonalBlog.BLL.Helpers;
 using PersonalBlog.DAL.Entities.Auth;
 
