@@ -13,6 +13,7 @@ public class PostRepository: RepositoryBase<int, Post>, IPostRepository
     public async Task<IEnumerable<Post>> GetAllAsync(int blogId)
     {
         return await Table.Select(item => item).Where(item => item.BlogId == blogId)
-            .Include(post => post.User).ToListAsync();
+            .Include(post => post.User)
+            .Include(item=> item.Comments).ToListAsync();
     } 
 }

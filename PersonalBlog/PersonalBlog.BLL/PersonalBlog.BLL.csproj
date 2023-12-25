@@ -4,22 +4,22 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="12.0.1" />
-      <PackageReference Include="MailKit" Version="4.3.0" />
       <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\PersonalBlog.DAL\PersonalBlog.DAL.csproj" />
+      <ProjectReference Include="..\PersonalBlog.API.FluentEmail\PersonalBlog.API.FluentEmail.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Interfaces\Subscription\" />
-      <Folder Include="Subscription\Models\" />
     </ItemGroup>
 
 </Project>

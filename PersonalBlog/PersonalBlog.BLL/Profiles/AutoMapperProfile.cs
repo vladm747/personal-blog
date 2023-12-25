@@ -10,7 +10,11 @@ public class AutoMapperProfiles: Profile
 {
     public AutoMapperProfiles()
     {
-        CreateMap<Comment, CommentDTO>().ReverseMap();
+        CreateMap<Comment, CommentDTO>()
+            .ForMember(dest => dest.UserNickName,
+            opt=> opt
+                .MapFrom(src => src.User!.NickName));
+        CreateMap<CommentDTO, Comment>().ReverseMap();
         CreateMap<Post, PostDTO>()
             .ForMember(dest => dest.UserNickName,
                 opt=> opt

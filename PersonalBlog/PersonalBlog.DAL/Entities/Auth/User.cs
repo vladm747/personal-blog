@@ -13,7 +13,7 @@ public class User: IdentityUser
     public string RefreshToken { get; set; } = string.Empty;
     public DateTime TokenCreated { get; set; }
     public DateTime TokenExpires { get; set; }
-    public Blog? Blog { get; set; }
+    public virtual Blog Blog { get; set; }
     public ICollection<Post>? Posts { get; set; }
     public ICollection<Comment>? Comments { get; set; }
 }

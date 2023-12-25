@@ -14,13 +14,9 @@ public class Post
     
     [Required]
     public DateTime PublicationDate { get; set; }
-    
-    [ForeignKey(nameof(User))]
+  
     public string UserId { get; set; }
-    
     public User User { get; set; }
-    
-    [ForeignKey(nameof(Blog))]
     public int BlogId { get; set; }
     public Blog Blog { get; set; } = null!;
     

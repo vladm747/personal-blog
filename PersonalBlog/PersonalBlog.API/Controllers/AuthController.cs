@@ -121,7 +121,7 @@ public class AuthController : ControllerBase
             Secure = true
         };
        
-        Response.Cookies.Append("JWT", "", cookieOptions);
+        Response.Cookies.Append("accessToken", "", cookieOptions);
     }
     
     private void SetRefreshTokenNull()

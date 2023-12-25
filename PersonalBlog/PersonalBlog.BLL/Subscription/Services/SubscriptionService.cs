@@ -1,27 +1,23 @@
 ﻿using System.Security.Claims;
-using MailKit.Net.Smtp;
-using MailKit.Security;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using MimeKit;
-using PersonalBlog.BLL.Interfaces;
 using PersonalBlog.BLL.Interfaces.Auth;
 using PersonalBlog.BLL.Subscription.Interfaces;
-using PersonalBlog.DAL.Entities.Auth;
 using PersonalBlog.DAL.Infrastructure.DI.Abstract;
-    
+using PersonalBlog.FluentEmail.Interfaces;
+
 namespace PersonalBlog.BLL.Subscription.Services;
 
 public class SubscriptionService: ISubscriptionService
 {
     private readonly ISubscriptionRepository _repo;
     private readonly IUserService _userService;
+    private readonly IEmailService _emailService;
 
-    public SubscriptionService(ISubscriptionRepository repo, IUserService userService)
+    public SubscriptionService(ISubscriptionRepository repo, IUserService userService, IEmailService emailService)
     {
         _repo = repo;
         _userService = userService;
+        _emailService = emailService;
     }
 
     public IEnumerable<int> GetSubscriptions(ClaimsPrincipal userPrincipal)
@@ -54,41 +50,17 @@ public class SubscriptionService: ISubscriptionService
     }
 
 
-    public void Notify(ClaimsPrincipal userPrincipal, int blogId)
+    public void Notify(string nickName, int blogId)
     {
         try
         {
-            var message = new MimeMessage();
             var ids =  _repo.GetSubscribers(blogId);
 
             if (!ids.IsNullOrEmpty())
             {
-                var nickName =  _userService.GetNickName(userPrincipal);
                 var emails =  _userService.GetUsersEmails(ids);
                 
-                message.From.Add(new MailboxAddress("Arch Bergstrom", "arch.bergstrom@ethereal.email"));
-                
-                foreach (var email in emails)
-                {
-                    message.To.Add(MailboxAddress.Parse(email));
-                }
-
-                message.Subject = $"The new post of {nickName} just came out!";
-
-                message.Body = new TextPart("plain")
-                {
-                    Text = "Dear Subscriber, visit our site to check out new updates!"
-                };
-            }
-
-            using (var client = new SmtpClient())
-            {
-                client.Connect("smtp.ethereal.email", 587, SecureSocketOptions.StartTls);
-                client.AuthenticationMechanisms.Remove("XOAUTH2");
-
-                client.Authenticate("arch.bergstrom@ethereal.email", "wWMydCRVzjuWuTMvTh");
-                client.Send(message);
-                client.Disconnect(true);
+                _emailService.Send(emails, nickName);
             }
         }
         catch (Exception ex)

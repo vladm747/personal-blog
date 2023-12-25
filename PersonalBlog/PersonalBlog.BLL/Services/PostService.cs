@@ -40,7 +40,7 @@ public class PostService: IPostService
         return _mapper.Map<PostDTO>(post);
     }
 
-    public async Task CreateAsync(ClaimsPrincipal userPrincipal, PostDTO entity)
+    public async Task CreateAsync(PostDTO entity)
     {
         if (entity == null)
             throw new ArgumentNullException("the entity you are trying create is null");
@@ -52,7 +52,7 @@ public class PostService: IPostService
         }
         finally
         {
-            _subscription.Notify(userPrincipal, entity.BlogId);
+            _subscription.Notify(entity.UserNickName, entity.BlogId);
         }
     }
 

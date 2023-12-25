@@ -19,8 +19,9 @@ public class SubscriptionRepository: ISubscriptionRepository
             .Select(item => item.UserId).AsNoTracking().ToList();
 
 
-    public IEnumerable<int> GetSubscriptions(string userId) =>
-        _database.Subscriptions.Select(item => item.BlogId).ToList();
+    public IEnumerable<int> GetSubscriptions(string userId) => _database.Subscriptions
+            .Where(item => item.UserId == userId)
+            .Select(item => item.BlogId).ToList();
 
     public async Task<Subscription> GetSubscriptionAsync(string userId, int blogId) =>
         await _database.Subscriptions.Where(subscription =>

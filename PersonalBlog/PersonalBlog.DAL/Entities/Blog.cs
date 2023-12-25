@@ -9,10 +9,9 @@ public class Blog
     [Key]
     public int Id { get; set; }
     
-    [ForeignKey(nameof(User))]
-    public string UserId { get; set; }
+    public string UserId { get; set; } = string.Empty;
     
-    public User? User { get; set; }
+    public virtual User User { get; set; }
     
     public ICollection<Post> Posts { get; set; }
 }

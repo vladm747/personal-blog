@@ -12,6 +12,7 @@ public class CommentRepository: RepositoryBase<int, Comment>, ICommentRepository
 
     public async Task<IEnumerable<Comment>> GetAllAsync(int postId)
     {
-        return await Table.Select(item => item).Where(item => item.PostId == postId).ToListAsync();
+        return await Table.Select(item => item).Where(item => item.PostId == postId)
+            .Include(comment => comment.User).ToListAsync();
     } 
 }
