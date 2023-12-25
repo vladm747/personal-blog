@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PersonalBlog.BLL.DTO;
+using PersonalBlog.Common.DTO;
 using PersonalBlog.BLL.Interfaces;
 
 namespace PersonalBlog.API.Controllers;
