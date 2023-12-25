@@ -6,5 +6,4 @@ builder.Services.RegisterApplicationServices(builder.Configuration);
 var app = builder.Build();
 app.ConfigureMiddleware();
 
-
 app.Run();

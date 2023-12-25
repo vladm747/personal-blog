@@ -9,6 +9,7 @@ public class PostDTO
     public DateTime PublicationDate { get; set; }
     
     public string UserId { get; set; }
+    public string UserNickName { get; set; }
     
     public int BlogId { get; set; }
 }

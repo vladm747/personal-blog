@@ -5,7 +5,7 @@ namespace PersonalBlog.BLL.Interfaces.Auth;
 
 public interface IAuthService
 {
-    Task Register(RegisterDTO model);
+    Task<string> Register(RegisterDTO model);
     Task<User> Login(LoginDTO model);
     Task SignOut();
 }

@@ -51,13 +51,13 @@ namespace PersonalBlog.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "651f2309-87a5-4b52-8e7c-0748a3d2c0cb",
+                            Id = "56ec4878-916d-4f11-935c-ccdc849375d0",
                             Name = "author",
                             NormalizedName = "AUTHOR"
                         },
                         new
                         {
-                            Id = "bb7d1d82-199d-4cf3-abe5-1f46fd6b28ed",
+                            Id = "c650f183-c384-4a76-9228-82b47d8d0d57",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -215,8 +215,18 @@ namespace PersonalBlog.DAL.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TokenCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TokenExpires")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -333,7 +343,8 @@ namespace PersonalBlog.DAL.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
