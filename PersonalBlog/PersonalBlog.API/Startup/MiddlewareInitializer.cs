@@ -14,7 +14,7 @@ public static partial class MiddlewareInitializer
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
-        app.UseCors("MyAllowSpecificOrigins");
+        app.UseCors("AllowAllOrigins");
         
         return app;
     }

@@ -1,28 +1,27 @@
 import axios from "axios";
+import {getApiUrl} from "../helpers/API_URL.js";
 
-const PERSONAL_BLOG_API_BASE_URL = "http://localhost:5189/";
-
-
+const API_URL = getApiUrl();
 class CommentService {
 
     getComments(postId) {
-        return axios.get(PERSONAL_BLOG_API_BASE_URL + 'comments/' + postId);
+        return axios.get(API_URL + 'comments/' + postId);
     }
 
     createComment(comment) {
-        return axios.post(PERSONAL_BLOG_API_BASE_URL + 'comment/', comment);
+        return axios.post(API_URL + 'comment/', comment);
     }
 
     getCommentById(commentId) {
-        return axios.get(PERSONAL_BLOG_API_BASE_URL + 'comment/' + commentId);
+        return axios.get(API_URL + 'comment/' + commentId);
     }
 
     updateComment(comment, commentId) {
-        return axios.put(PERSONAL_BLOG_API_BASE_URL + 'comment/' + commentId, comment);
+        return axios.put(API_URL + 'comment/' + commentId, comment);
     }
 
     deleteComment(commentId) {
-        return axios.delete(PERSONAL_BLOG_API_BASE_URL + 'comment/' + commentId);
+        return axios.delete(API_URL + 'comment/' + commentId);
     }
 }
 export default CommentService;

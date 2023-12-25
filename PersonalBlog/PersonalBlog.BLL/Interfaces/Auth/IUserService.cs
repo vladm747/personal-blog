@@ -7,6 +7,7 @@ namespace PersonalBlog.BLL.Interfaces.Auth;
 
 public interface IUserService
 {
+    UserDTO GetCurrentUser(ClaimsPrincipal userPrincipal);
     User GetUserById(ClaimsPrincipal userPrincipal); 
     Task<IEnumerable<UserDTO>> GetAllAsync();
     string GetUserId(ClaimsPrincipal userPrincipal);

@@ -1,18 +1,15 @@
 import axios from "axios";
+import {getApiUrl} from "../helpers/API_URL.js";
 
-const PERSONAL_BLOG_API_BASE_URL = "http://localhost:5189/";
-
+const API_URL = getApiUrl();
+axios.defaults.withCredentials = true;
 class AuthService {
-    login(loginDto) {
-        return axios.post(PERSONAL_BLOG_API_BASE_URL + 'login', loginDto);
-    }
+    login = async (loginDto) => axios.post(API_URL + 'Auth/login', loginDto);
 
-    register(registerDto) {
-        return axios.post(PERSONAL_BLOG_API_BASE_URL + 'register', registerDto);
-    }
+    register = async (registerDto) => axios.post(API_URL + 'Auth/register', registerDto);
 
-    signOut() {
-        return axios.post(PERSONAL_BLOG_API_BASE_URL + 'signout');
-    }
+    signOut = async () => axios.post(API_URL + 'Auth/sign-out');
+
+    refreshToken = async () => axios.post(API_URL + 'Auth/refresh-token');
 }
 export default AuthService;

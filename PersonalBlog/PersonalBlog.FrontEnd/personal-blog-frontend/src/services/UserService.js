@@ -1,14 +1,17 @@
 import axios from "axios";
+import {getApiUrl} from "../helpers/API_URL.js";
 
-const PERSONAL_BLOG_API_BASE_URL = "http://localhost:5189/";
-
+const API_URL = getApiUrl();
 class UserService {
+
+    me = () => { return axios.get(API_URL + "User/me") };
+
     getAllUsers() {
-        return axios.get(PERSONAL_BLOG_API_BASE_URL + 'users');
+        return axios.get(API_URL + 'users');
     }
 
     deleteAccount(email) {
-        return axios.delete(PERSONAL_BLOG_API_BASE_URL + 'user', email);
+        return axios.delete(API_URL + 'user', email);
     }
 }
 export default UserService;

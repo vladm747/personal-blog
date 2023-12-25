@@ -1,27 +1,27 @@
 import axios from "axios";
+import {getApiUrl} from "../helpers/API_URL.js";
 
-const PERSONAL_BLOG_API_BASE_URL = "http://localhost:5189/";
-
+const API_URL = getApiUrl();
 class PostService {
 
     static getPosts(blogId) {
-        return axios.get(PERSONAL_BLOG_API_BASE_URL + 'posts'+'/' + blogId);
+        return axios.get(API_URL + 'posts'+'/' + blogId);
     }
 
     createPost(post) {
-        return axios.post(PERSONAL_BLOG_API_BASE_URL + 'post', post);
+        return axios.post(API_URL + 'post', post);
     }
 
     getPostById(postId) {
-        return axios.get(PERSONAL_BLOG_API_BASE_URL + 'post/' + postId);
+        return axios.get(API_URL + 'post/' + postId);
     }
 
     updatePost(post, postId) {
-        return axios.put(PERSONAL_BLOG_API_BASE_URL + 'post/' + postId, post);
+        return axios.put(API_URL + 'post/' + postId, post);
     }
 
     deletePost(postId) {
-        return axios.delete(PERSONAL_BLOG_API_BASE_URL + 'post/' + postId);
+        return axios.delete(API_URL + 'post/' + postId);
     }
 }
 export default PostService;

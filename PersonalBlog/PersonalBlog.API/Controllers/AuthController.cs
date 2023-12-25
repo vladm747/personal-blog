@@ -32,9 +32,9 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterDTO model)
     {
-        await _authService.Register(model);
+        var userId = await _authService.Register(model);
 
-        return Ok();
+        return Ok(userId);
     }
 
     [HttpPost("login")]
@@ -109,7 +109,7 @@ public class AuthController : ControllerBase
             Expires = DateTimeOffset.Now.AddHours(_jwtSettings.ExpirationInHours)
         };
        
-        Response.Cookies.Append("JWT", accessToken, cookieOptions);
+        Response.Cookies.Append("accessToken", accessToken, cookieOptions);
     }
     
     private void SetAccessTokenNull()

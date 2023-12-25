@@ -20,6 +20,17 @@ public class UserService: IUserService
         _mapper = mapper;
     }
 
+    public UserDTO GetCurrentUser(ClaimsPrincipal userPrincipal)
+    {
+        var userId = _userManager.GetUserId(userPrincipal);
+        var user = _userManager.Users.SingleOrDefault(user => user.Id == userId);
+        
+        if (user == null)
+            throw new UserNotFoundException("User Not Found");
+        
+        return _mapper.Map<User, UserDTO>(user);
+    }
+
     public User GetUserById(ClaimsPrincipal userPrincipal)
     {
         var userId = _userManager.GetUserId(userPrincipal);

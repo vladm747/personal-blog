@@ -50,10 +50,13 @@ public static class ServiceInitializer
         
         services.AddCors(options =>
         {
-            options.AddPolicy(name: "MyAllowSpecificOrigins",
-                policy  =>
+            options.AddPolicy(name: "AllowAllOrigins",
+                builder =>
                 {
-                    policy.WithOrigins("http://localhost:5173");
+                    builder.WithOrigins("http://localhost:5173");
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                    builder.AllowCredentials();
                 });
         });
         

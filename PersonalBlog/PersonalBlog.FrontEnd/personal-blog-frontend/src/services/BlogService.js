@@ -1,17 +1,17 @@
 import axios from "axios";
+import {getApiUrl} from "../helpers/API_URL.js";
 
-const PERSONAL_BLOG_API_BASE_URL = "http://localhost:5189/api/Blog/";
-
+const API_URL = getApiUrl();
 class BlogService {
 
-    getBlogs = async () => axios.get(PERSONAL_BLOG_API_BASE_URL + 'blogs');
+    getBlogs = async () => axios.get(API_URL + 'Blog/blogs');
 
     getBlogById(blogId){
-        return axios.get(PERSONAL_BLOG_API_BASE_URL + 'blog/' + blogId);
+        return axios.get(API_URL + 'Blog/blog/' + blogId);
     }
 
     deleteBlog(blogId){
-        return axios.delete(PERSONAL_BLOG_API_BASE_URL + 'blog/' + blogId);
+        return axios.delete(API_URL + 'Blog/blog/' + blogId);
     }
 }
 

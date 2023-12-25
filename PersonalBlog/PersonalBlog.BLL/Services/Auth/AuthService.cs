@@ -31,7 +31,7 @@ public class AuthService: IAuthService
         _jwtSettings = jwtSettings.Value;
     }
     
-    public async Task Register(RegisterDTO user)
+    public async Task<string> Register(RegisterDTO user)
     {
         var refreshToken = _tokenService.GenerateRefreshToken(_jwtSettings);
         
@@ -62,6 +62,7 @@ public class AuthService: IAuthService
             {
                 await _blogService.CreateAsync(toCreate.Id);
             }
+            return userToCreate.Id;
         }
     }
     
