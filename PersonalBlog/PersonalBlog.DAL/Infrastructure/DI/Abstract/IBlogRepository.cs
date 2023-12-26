@@ -8,5 +8,5 @@ public interface IBlogRepository
     Task<IEnumerable<Blog>> GetAllAsync();
     Task<Blog> CreateAsync(Blog entity);
     Task<Blog> GetByIdAsync(int blogId);
-    Task DeleteAsync(Blog entity);
+    Task<int> DeleteAsync(Blog entity);
 }

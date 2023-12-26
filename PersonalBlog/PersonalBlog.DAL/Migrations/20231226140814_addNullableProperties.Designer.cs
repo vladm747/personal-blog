@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonalBlog.DAL.Context;
 
@@ -11,9 +12,11 @@ using PersonalBlog.DAL.Context;
 namespace PersonalBlog.DAL.Migrations
 {
     [DbContext(typeof(PersonalBlogContext))]
-    partial class PersonalBlogContextModelSnapshot : ModelSnapshot
+    [Migration("20231226140814_addNullableProperties")]
+    partial class addNullableProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,13 +54,13 @@ namespace PersonalBlog.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f34989bb-58c0-44e8-ab6e-f780b2182884",
+                            Id = "6f639d58-7d27-4d02-bc30-ec34b56e7702",
                             Name = "author",
                             NormalizedName = "AUTHOR"
                         },
                         new
                         {
-                            Id = "d9d07fcb-33bb-4b12-9ddb-ddd09bb473f8",
+                            Id = "953a5396-9134-43f0-85e6-c45baefd898d",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -437,13 +440,13 @@ namespace PersonalBlog.DAL.Migrations
                     b.HasOne("PersonalBlog.DAL.Entities.Blog", "Blog")
                         .WithMany("Posts")
                         .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("PersonalBlog.DAL.Entities.Auth.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Blog");

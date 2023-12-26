@@ -17,8 +17,9 @@ public class BlogRepository: IBlogRepository
     public async Task<IEnumerable<Blog>> GetAllAsync()
     {
         return await _context.Blogs
+            .Include(blog => blog.Posts)
             .Include(blog => blog.User)
-            .Include(blog => blog.Posts).ToListAsync();
+            .ToListAsync();
     }
 
     public async Task<Blog> CreateAsync(Blog entity)
@@ -35,9 +36,10 @@ public class BlogRepository: IBlogRepository
         return blog;
     }
 
-    public async Task DeleteAsync(Blog entity)
+    public async Task<int> DeleteAsync(Blog entity)
     {
         _context.Blogs.Remove(entity);
-        await _context.SaveChangesAsync();
+        var result = await _context.SaveChangesAsync();
+        return result;
     }
 }
