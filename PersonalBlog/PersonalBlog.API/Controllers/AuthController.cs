@@ -70,8 +70,8 @@ public class AuthController : ControllerBase
         string jwtToken = _tokenService.GenerateJwtToken(user, roles, _jwtSettings);
         var newRefreshToken = _tokenService.GenerateRefreshToken(_jwtSettings);
         
-        SetRefreshToken(jwtToken);
-        SetAccessToken(newRefreshToken.Token);
+        SetRefreshToken(newRefreshToken.Token);
+        SetAccessToken(jwtToken);
         
         var result = await _tokenService.UpdateUserRefreshToken(user, newRefreshToken);
         
