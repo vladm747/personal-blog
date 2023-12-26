@@ -10,7 +10,7 @@ public abstract class RepositoryBase<TKey, TEntity> : IRepositoryBase<TKey, TEnt
     private readonly bool _disposeContext;
     private bool _isDisposed;
     private DbContext Context { get; set; }
-    public DbSet<TEntity> Table { get; }
+    protected DbSet<TEntity> Table { get; }
 
     protected RepositoryBase(DbContext dbContext)
     {
