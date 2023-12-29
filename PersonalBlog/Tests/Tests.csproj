@@ -10,6 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.12" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.12" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
         <PackageReference Include="Moq" Version="4.20.70" />
@@ -26,6 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\PersonalBlog.API\PersonalBlog.API.csproj" />
       <ProjectReference Include="..\PersonalBlog.DAL\PersonalBlog.DAL.csproj" />
     </ItemGroup>
 

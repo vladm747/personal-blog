@@ -23,18 +23,6 @@ public class PersonalBlogContext: IdentityDbContext<User>
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<IdentityRole>().HasData(new[]
-        {
-            new IdentityRole("author")
-            {
-                NormalizedName = "AUTHOR"
-            },
-            new IdentityRole("user")
-            {
-                NormalizedName = "USER"
-            }
-        });
-
         modelBuilder.Entity<User>()
             .HasOne(e => e.Blog)
             .WithOne(e => e.User)

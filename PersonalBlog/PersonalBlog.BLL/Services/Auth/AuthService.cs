@@ -37,6 +37,7 @@ public class AuthService: IAuthService
         
         var result = await _userManager.CreateAsync(new User
         {
+            Id = Guid.NewGuid().ToString(),
             NickName = user.NickName,
             UserName = user.Email,
             Email = user.Email,

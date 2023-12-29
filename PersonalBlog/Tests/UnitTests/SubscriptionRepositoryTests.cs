@@ -45,6 +45,7 @@ public class SubscriptionRepositoryTests: IClassFixture<DatabaseSeedDataFixture>
     {
         // Act
         var result =  await _repository.GetSubscriptionAsync("98ef8882-d443-4593-be9c-3570da9a8f67", 2); 
+        
         // Assert
         Assert.Equal("98ef8882-d443-4593-be9c-3570da9a8f67", result.UserId);
     }
