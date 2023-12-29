@@ -11,7 +11,7 @@ public class Blog
     
     public string UserId { get; set; } = string.Empty;
     
-    public virtual User User { get; set; }
+    public virtual User? User { get; set; }
     
-    public ICollection<Post> Posts { get; set; }
+    public ICollection<Post>? Posts { get; set; }
 }

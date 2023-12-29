@@ -57,8 +57,33 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> RefreshToken()
     {
         var refreshToken = Request.Cookies["refreshToken"];
+
         var user = _userService.GetUserById(HttpContext.User);
+
+        if (!user.RefreshToken.Equals(refreshToken))
+            return Unauthorized("Invalid Refresh Token");
         
+        if(user.TokenExpires < DateTime.Now)
+            return Unauthorized("Token expired");
+        
+        var roles = await _roleService.GetRoles(user);
+
+        string jwtToken = _tokenService.GenerateJwtToken(user, roles, _jwtSettings);
+        var newRefreshToken = _tokenService.GenerateRefreshToken(_jwtSettings);
+        
+        SetRefreshToken(newRefreshToken.Token);
+        SetAccessToken(jwtToken);
+        
+        var result = await _tokenService.UpdateUserRefreshToken(user, newRefreshToken);
+        
+        return Ok(jwtToken);
+    }
+    
+    [HttpPost("test-refresh-token")]
+    public async Task<IActionResult> TestRefreshToken([FromBody] string refreshToken)
+    {
+        var user = _userService.GetUserById(HttpContext.User);
+
         if (!user.RefreshToken.Equals(refreshToken))
             return Unauthorized("Invalid Refresh Token");
         

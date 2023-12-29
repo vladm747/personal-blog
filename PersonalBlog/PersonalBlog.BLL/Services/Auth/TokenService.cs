@@ -38,10 +38,9 @@ public class TokenService: ITokenService
         
         return result;
     }
-    public string GenerateJwtToken(User user, IEnumerable<string> roles, JwtSettings jwtSettings)
-    {
-        if (user == null) throw new Exception($"Jwt generation not proceeded - {nameof(user)} is null");
 
+    private List<Claim> SetUserClaims(User user)
+    {
         var claims = new List<Claim>
         {
             new (JwtRegisteredClaimNames.Sub, user.Id),
@@ -52,9 +51,22 @@ public class TokenService: ITokenService
             new (ClaimTypes.Role, "user")
         };
 
-        var roleClaims = roles.Select(r => new Claim(ClaimTypes.Role, r));
-        claims.AddRange(roleClaims);
+        return claims;
+    }
 
+    private IEnumerable<Claim> SetRoleClaims(IEnumerable<string> roles) =>
+        roles.Select(r => new Claim(ClaimTypes.Role, r));
+    
+    public string GenerateJwtToken(User user, IEnumerable<string> roles, JwtSettings jwtSettings)
+    {
+        if (user == null) throw new Exception($"Jwt generation not proceeded - {nameof(user)} is null");
+
+        var claims = SetUserClaims(user);
+        
+        var roleClaims = SetRoleClaims(roles);
+        
+        claims.AddRange(roleClaims);
+        
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         var expires = DateTime.Now.AddHours(Convert.ToDouble(jwtSettings.ExpirationInHours));

@@ -23,18 +23,6 @@ public class PersonalBlogContext: IdentityDbContext<User>
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<IdentityRole>().HasData(new[]
-        {
-            new IdentityRole("author")
-            {
-                NormalizedName = "AUTHOR"
-            },
-            new IdentityRole("user")
-            {
-                NormalizedName = "USER"
-            }
-        });
-
         modelBuilder.Entity<User>()
             .HasOne(e => e.Blog)
             .WithOne(e => e.User)
@@ -42,33 +30,42 @@ public class PersonalBlogContext: IdentityDbContext<User>
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
         
+        modelBuilder.Entity<User>()
+            .HasMany(e => e.Posts)
+            .WithOne(e => e.User)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<User>()
+            .HasMany(e => e.Comments)
+            .WithOne(e => e.User)
+            .HasForeignKey( e => e.UserId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
+
         modelBuilder.Entity<Blog>()
-            .HasMany(item => item.Posts)
-            .WithOne(item => item.Blog)
+            .HasMany(e => e.Posts)
+            .WithOne(e => e.Blog)
             .HasForeignKey(e => e.BlogId)
-            .OnDelete(DeleteBehavior.NoAction)
-            .IsRequired();
-
-        modelBuilder.Entity<Post>()
-            .HasMany(item => item.Comments)
-            .WithOne(item => item.Post)
-            .HasForeignKey(e => e.PostId)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
         
-        modelBuilder.Entity<Comment>()
-            .HasOne(item => item.User)
-            .WithMany(item => item.Comments)
-            .HasForeignKey(item => item.UserId)
-            .OnDelete(DeleteBehavior.NoAction)
-            .IsRequired();
-
-
+        modelBuilder.Entity<Post>()
+            .HasMany(e => e.Comments)
+            .WithOne(e => e.Post)
+            .HasForeignKey(e => e.PostId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+        
         base.OnModelCreating(modelBuilder);
     }
-    
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-        optionsBuilder.UseSqlServer(
-            "Server=.;Database=PersonalBlogDB;Trusted_Connection=True;TrustServerCertificate=true");
-    
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(
+                "Server=.;Database=PersonalBlogDB;Trusted_Connection=True;TrustServerCertificate=true");
+        }
+    }
 }

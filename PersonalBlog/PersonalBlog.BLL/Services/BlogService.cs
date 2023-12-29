@@ -46,13 +46,13 @@ public class BlogService: IBlogService
         return _mapper.Map<BlogDTO>(blog);
     }
 
-    public async Task DeleteAsync(int blogId)
+    public async Task<int> DeleteAsync(int blogId)
     {
         var blog = await _repo.GetByIdAsync(blogId);
 
         if (blog == null)
             throw new KeyNotFoundException($"There is no blog with ID {blogId} in database.");
 
-        await _repo.DeleteAsync(blog);
+        return await _repo.DeleteAsync(blog);
     }
 }

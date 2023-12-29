@@ -39,38 +39,43 @@ public class PostService: IPostService
         return _mapper.Map<PostDTO>(post);
     }
 
-    public async Task CreateAsync(PostDTO entity)
+    public async Task<PostDTO?> CreateAsync(PostDTO entity)
     {
         if (entity == null)
             throw new ArgumentNullException("the entity you are trying create is null");
         
         var post = _mapper.Map<Post>(entity);
+        Post? createdPost;
+        
         try
         {
-            await _repo.CreateAsync(post);
+           createdPost =  await _repo.CreateAsync(post);
         }
         finally
         {
             _subscription.Notify(entity.UserNickName, entity.BlogId);
         }
+
+        return createdPost != null ? _mapper.Map<PostDTO>(createdPost) : null;
     }
 
-    public async Task DeleteAsync(int postId)
+    public async Task<int> DeleteAsync(int postId)
     {
         var entity = await _repo.FindByKeyAsync(postId);
 
         if (entity == null)
             throw new InvalidOperationException("The entity you are trying to delete does not exist in database!");
         
-        await _repo.DeleteAsync(entity);
+        return await _repo.DeleteAsync(entity);
     }
 
-    public async Task UpdateAsync(PostDTO entity)
+    public async Task<int> UpdateAsync(PostDTO entity)
     {
         if (entity == null)
             throw new ArgumentNullException("entity is null.");
         
         var post = _mapper.Map<Post>(entity);
-        await _repo.UpdateAsync(post);
+        
+        return await _repo.UpdateAsync(post);
     }
 }

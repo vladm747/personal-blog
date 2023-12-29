@@ -37,22 +37,23 @@ namespace PersonalBlog.API.Controllers
         
         [Authorize(Roles = "author")]
         [HttpPost("blog")]
-        public async Task<IActionResult> CreateAsync(string userId)
+        public async Task<IActionResult> CreateAsync([FromBody] string userId)
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
             if (user.Id != userId)
                 return BadRequest();
 
-            await _service.CreateAsync(userId);
-            return Ok();
+            var result = await _service.CreateAsync(userId);
+            return Ok(result);
         }
         [Authorize(Roles = "author")]
         [HttpDelete("blog/{blogId}")]
         public async Task<IActionResult> DeleteAsync(int blogId)
         {
-            await _service.DeleteAsync(blogId);
-            return Ok();
+            var result = await _service.DeleteAsync(blogId);
+            
+            return Ok(result);
         }
     }
 }

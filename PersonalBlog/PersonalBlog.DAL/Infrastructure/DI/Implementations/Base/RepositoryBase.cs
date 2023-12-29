@@ -18,38 +18,31 @@ public abstract class RepositoryBase<TKey, TEntity> : IRepositoryBase<TKey, TEnt
         Table = Context.Set<TEntity>();
         _disposeContext = false;
     }
-
-    public virtual IEnumerable<TEntity> GetAll()
-    {
-        return Table;
-    }
     
-    public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
-    {
-        return await Table.ToListAsync();
-    }
-
     public virtual async Task<TEntity> FindByKeyAsync(TKey key)
     {
         return await Table.FindAsync(key);
     }
 
-    public async Task CreateAsync(TEntity item)
+    public async Task<TEntity?> CreateAsync(TEntity item)
     {
         var entityEntry = await Table.AddAsync(item);
         await Context.SaveChangesAsync();
+        return entityEntry.Entity;
     }
 
-    public async Task UpdateAsync(TEntity item)
+    public async Task<int> UpdateAsync(TEntity item)
     {
         Context.Entry(item).State = EntityState.Modified;
-       await Context.SaveChangesAsync();
+        var result = await Context.SaveChangesAsync();
+        return result;
     }
 
-    public async Task DeleteAsync(TEntity item)
+    public async Task<int> DeleteAsync(TEntity item)
     {
         Table.Remove(item);
-        await Context.SaveChangesAsync();
+        var result = await Context.SaveChangesAsync();
+        return result;
     }
     
     protected virtual void Dispose(bool disposing)

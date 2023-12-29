@@ -34,8 +34,9 @@ namespace PersonalBlog.API.Controllers
         [HttpPost("post")]
         public async Task<IActionResult> CreatePost([FromBody] PostDTO post)
         {
-            await _service.CreateAsync(post);
-            return Ok();
+            var postDto = await _service.CreateAsync(post);
+       
+            return Ok(postDto);
         }
         
         [Authorize(Roles = "author")]
@@ -44,16 +45,18 @@ namespace PersonalBlog.API.Controllers
         {
             if (id != post.Id)
                 return BadRequest();
-            await _service.UpdateAsync(post);
-            return Ok();
+            var result = await _service.UpdateAsync(post);
+            
+            return Ok(result);
         }
         
         [Authorize(Roles = "author")]
         [HttpDelete("post/{postId}")]
         public async Task<IActionResult> DeleteAsync(int postId)
         {
-            await _service.DeleteAsync(postId);
-            return Ok();
+            var result = await _service.DeleteAsync(postId);
+            
+            return Ok(result);
         }
     }
 }

@@ -18,7 +18,7 @@ public class Post
     public string UserId { get; set; }
     public User User { get; set; }
     public int BlogId { get; set; }
-    public Blog Blog { get; set; } = null!;
+    public Blog? Blog { get; set; } = null!;
     
-    public IEnumerable<Comment> Comments { get; set; }
+    public IEnumerable<Comment>? Comments { get; set; }
 }
